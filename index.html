@@ -3,17 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <title>Mans Portfolio</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1></h1>
+    <h1>Mnas Portfolio</h1>
   </header>
   <section>
-    <h2>Projects</h2>
-    <p>Here are some of my projects.</p>
-    <!-- Add project details here -->
+    <h2>Par mani</h2>
+    <p>Pašlaik mācos Rīgas tehniskās universitātes inženierzinātņu vidusskolā.</p>
+  </section>
+  <section>
+    <h2>Sazinies ar mani!</h2>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+          document.getElementById("demo-form").submit();
+        }
+      </script>
+    <button class="g-recaptcha" 
+    data-sitekey="6LdMCWQqAAAAAOJTBOS3liqshvGcT02GBbI8wydD" 
+    data-callback='onSubmit' 
+    data-action='submit'>Submit</button>
+    <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+    <script>
+        function onClick(e) {
+          e.preventDefault();
+          grecaptcha.ready(function() {
+            grecaptcha.execute('reCAPTCHA_site_key', {action: 'submit'}).then(function(token) {
+                // Add your logic to submit to your backend server here.
+            });
+          });
+        }
+    </script>
+  
   </section>
 </body>
 </html>
