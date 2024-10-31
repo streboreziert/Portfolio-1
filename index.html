@@ -1,49 +1,254 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Matīss Kalniņš</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matīss Kalniņš - Portfolio</title>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script type="text/javascript">
     (function () {
-      emailjs.init({
-        publicKey: "JSzALyNrDGMPil82D",
-      });
+      emailjs.init("JSzALyNrDGMPil82D");
     })();
   </script>
   <script type="text/javascript">
     window.onload = function () {
-      document.getElementById('form').addEventListener('submit', function (event) {
+      document.getElementById('contact-form').addEventListener('submit', function (event) {
         event.preventDefault();
-        // these IDs from the previous steps
         emailjs.sendForm('service_hkpfk94', 'template_kaxeix5', this)
           .then(() => {
-            alert('E-pasts aizsūtīts');
+            alert('Email sent successfully!');
           }, (error) => {
-            console.log('Kļūda', error);
+            console.log('Error:', error);
           });
       });
     }
   </script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+    }
 
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    body {
+      background-color: #f3f4f6;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
 
+    /* Header */
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #6e7bff, #6eb5ff);
+      color: #fff;
+      border-radius: 8px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      animation: fadeInDown 1.2s ease-in-out;
+    }
+
+    header p {
+      font-size: 1.1em;
+      color: #f0f0f0;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Portfolio Section */
+    .portfolio {
+      margin: 40px 0;
+    }
+
+    .portfolio h2 {
+      text-align: center;
+      font-size: 1.8em;
+      color: #4460AA;
+      margin-bottom: 30px;
+    }
+
+    .portfolio-item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .portfolio-item h3 {
+      color: #333;
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-item p {
+      color: #666;
+      font-size: 1em;
+    }
+
+    /* Contact Section */
+    .contact {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact h2 {
+      text-align: center;
+      font-size: 1.8em;
+      color: #4460AA;
+      margin-bottom: 20px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.9em;
+      color: #777;
+      margin-bottom: 5px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: #4460AA;
+      box-shadow: 0 0 5px rgba(68, 96, 170, 0.2);
+    }
+
+    input[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1em;
+      background-color: #4460AA;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #365492;
+    }
+
+    .g-recaptcha {
+      margin: 15px 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #4460AA;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #365492;
+    }
+  </style>
 </head>
 
-
 <body>
-  <form id="form">
-    <label>Vārds</label><br>
-    <input type="text" name="name" required><br>
-    <label>E-pasts</label><br>
-    <input type="email" name="email" required><br>
-    <label>Temats</label><br>
-    <input type="text" name="subject" requred><br>
-    <label>Ziņa</label><br>
-    <textarea name="message" required></textarea><br>
-    <div class="g-recaptcha" data-sitekey="6LcR6XAqAAAAANkCFSi_MuQI9rbp1sQozT9a17JH"></div>
-    <input type="submit" value="Send">
-  </form>
+  <!-- Header -->
+  <header>
+    <h1>Matīss Kalniņš</h1>
+    <p>Electrical Engineer | Software Developer | Technology Enthusiast</p>
+  </header>
+
+  <!-- Portfolio Section -->
+  <section class="portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio-item">
+      <h3>Project 1: Custom Microcontroller Board</h3>
+      <p>Designed a custom microcontroller board with USB-C power delivery for various hardware projects.</p>
+    </div>
+    <div class="portfolio-item">
+      <h3>Project 2: AI-Driven Physics Notes</h3>
+      <p>Developed an AI model to generate concise notes from physics lectures, facilitating study and review.</p>
+    </div>
+    <!-- Add more portfolio items as needed -->
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact">
+    <h2>Contact Me</h2>
+    <form id="contact-form">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="field">
+        <label for="subject">Subject</label>
+        <input type="text" name="subject" required>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea name="message" rows="5" required></textarea>
+      </div>
+      <div class="g-recaptcha" data-sitekey="6LcR6XAqAAAAANkCFSi_MuQI9rbp1sQozT9a17JH"></div>
+      <input type="submit" value="Send Message">
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Matīss Kalniņš. All Rights Reserved. <a href="#top">Back to Top</a></p>
+  </footer>
 </body>
 
 </html>
